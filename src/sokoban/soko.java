@@ -15,8 +15,6 @@ public class soko {
 		System.out.println("  SOKOBAN");
 		print(soko);
 		
-		System.out.print("Odigrajte potez");
-		
 		
 		while(!endGame(soko)) {
 			System.out.print("Odigrajte potez");
@@ -24,7 +22,9 @@ public class soko {
 			
 			makeAMove(move, soko);
 			print(soko);
+			System.out.println();
 		}
+		System.out.println("Kraj Igre");
 
 	}
 	
@@ -60,43 +60,103 @@ public class soko {
 		
 		switch (move) {
 		case "a":
-				for (int i = 0; i < table.length; i++) {
-					if(table[i].equals("U")) {
+
+		
+		for (int i = 0; i < table.length; i++) {
+			if(table[i].equals("U")) {
+				
+				
+				if(i-1>=0 && !table[i-1].equals("X")) {
+					if(table[i-1].equals("B")) {
 						table[i]= " ";
-						i--;
+						i=i-1;
+						table[i]= "U";
+						table[i-1]="B";
+					}else {
+						table[i]= " ";
+						i=i-1;
 						table[i]= "U";
 					}
+				}else {
+						System.out.println("Nevalidan potez");
 				}
+			}
+		}
 			break;
 			
 		case "d":
+
 			for (int i = 0; i < table.length; i++) {
 				if(table[i].equals("U")) {
-					table[i]= " ";
-					i++;
-					table[i]= "U";
+					
+					
+					if(i+1>=0 && !table[i+1].equals("X")) {
+						if(table[i+1].equals("B")) {
+							table[i]= " ";
+							i=i+1;
+							table[i]= "U";
+							table[i+1]="B";
+						}else {
+							table[i]= " ";
+							i=i+1;
+							table[i]= "U";
+						}
+					}else {
+							System.out.println("Nevalidan potez");
+					}
 				}
 			}
+			
+			
+			
 		break;
 
 		case "w":
 			for (int i = 0; i < table.length; i++) {
 				if(table[i].equals("U")) {
-					table[i]= " ";
-					i=i-5;
-					table[i]= "U";
+					
+					
+					if(i-5>=0 && !table[i-5].equals("X")) {
+						if(table[i-5].equals("B")) {
+							table[i]= " ";
+							i=i-5;
+							table[i]= "U";
+							table[i-5]="B";
+						}else {
+							table[i]= " ";
+							i=i-5;
+							table[i]= "U";
+						}
+					}else {
+							System.out.println("Nevalidan potez");
+					}
 				}
 			}
 		break;
 		
 		case "s":
+		
 			for (int i = 0; i < table.length; i++) {
 				if(table[i].equals("U")) {
-					table[i]= " ";
-					i=i+5;
-					table[i]= "U";
+					
+					
+					if(i+5<=table.length-1 && !table[i+5].equals("X")) {
+						if(table[i+5].equals("B")) {
+							table[i]= " ";
+							i=i+5;
+							table[i]= "U";
+							table[i+5]="B";
+						}else {
+							table[i]= " ";
+							i=i+5;
+							table[i]= "U";
+						}
+					}else {
+							System.out.println("Nevalidan potez");
+					}
 				}
 			}
+			
 		break;
 		
 		default:
@@ -104,5 +164,7 @@ public class soko {
 			break;
 		}
 	}
+	
+
 
 }
